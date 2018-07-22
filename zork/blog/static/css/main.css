@@ -1,0 +1,76 @@
+body {
+    /* background-color: #f4f1e5; */
+    background-image: url('../img/notebook.png');
+
+}
+
+a:hover {
+    color:#a73a3a;
+
+}
+.feed{
+    background: #f6b39d;
+}
+.shape {
+    border-radius: 10px;
+    background: ##fdfcfc;
+
+
+}
+/* input:onclick {
+    	width:70px;
+    	height:74px;
+        border: 1px solid red;
+    } */
+h3 {
+    color: brown;
+}
+.form-control {
+    border-color: #e0a693;
+}
+.btn-success{
+    background-color: #a73a3a;
+    border-color: #e0a693;
+
+}
+.btn-success:hover {
+    background-color: #e0a693;
+    border-color: #e0a693;
+}
+/* style for paginator */
+.pagination {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.pagination-number {
+    padding: 0.3em 1.1em;
+    /* 0.9em; */
+    border-radius: 3px;
+    color: #000;
+    background-color: #efcdc1;
+    /* #f09f96; */
+}
+
+.pagination-number:hover, .pagination-current {
+    background-color: #a73a3a;
+    color:white;
+    /* #3354AA; */
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 0.3em 1.1em;
+    /* 0.5em; */
+    color: black;
+    /* #efcdc1; */
+    /* #B9B9B9; */
+    font-size: 1.3em;
+}
+.pagination-action:hover, .pagination-previous, .pagination-next {
+    color: #B54B4A;
+    /* #3354AA; the same as button */
+}
+
+/* end style paginator */

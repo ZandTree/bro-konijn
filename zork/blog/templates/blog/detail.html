@@ -1,0 +1,49 @@
+{% extends 'blog/layout.html'%}
+{%block title%}detail | {{block.super}}{% endblock %}
+
+ <!-- start breadcrumb -->
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="mt-2">
+        <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'blog:home' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="#">Detail</a></li>
+            </ol>
+        </div>
+    </nav>
+{% endblock %}
+<!-- end breadcrumb -->
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li>{{message}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<h1>Detail about this blog</h1>
+
+<h2>Title: {{blog.title}}</h3>
+<p>Content: {{blog.content}}</p>
+<p>Created at {{blog.timestamp|date:'F j H:i  D, Y'}}</p>
+<p>Created by {{blog.author}}</p>
+<hr>
+<div class="row">
+    <div class="col-lg-6">
+        <h5><a href="{% url 'blog:edit' pk=blog.id %}">Would you like to edit this post?</a></h5>
+
+    </div>
+    <div class="col-lg-6">
+        <h5><a href="{% url 'blog:delete' pk=blog.id %}">Would you like to delete this post?</a></h5>
+
+    </div>
+
+</div>
+
+
+<h5 class="mt-3"><a href="{% url 'blog:home' %}"><strong>&#8592;</strong>Back to home</a></h5>
+{% endblock %}
+{% block contact_email %}{{contact_email|urlize}}{%endblock%}

@@ -1,0 +1,28 @@
+{% extends 'blog/layout.html'%}
+{%block title%}create | {{block.super}}{% endblock %}
+
+ <!-- start breadcrumb -->
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="mt-2">
+        <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'blog:home' %}">Home</a></li>
+              <li class="breadcrumb-item active"><a href="#">Create</a></li>
+            </ol>
+        </div>
+    </nav>
+{% endblock %}
+<!-- end breadcrumb -->
+
+{% block content %}
+<h1>To make a new blog?</h1>
+<form  action="" method="post" novalidate >
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" value="Save" class="btn btn-primary">
+</form>
+
+
+
+<h5 class="mt-3"><a href="{% url 'blog:home' %}"><strong>&#8592;</strong>Back to home</a></h5>
+{% endblock %}

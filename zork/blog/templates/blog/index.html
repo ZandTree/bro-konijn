@@ -1,0 +1,42 @@
+{% extends 'blog/layout.html'%}
+{%block title%}home | {{block.super}}{% endblock %}
+<!-- start breadcrumb -->
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="mt-2">
+        <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active"><a href="{% url 'blog:home' %}">All blogs</a></li>
+            </ol>
+        </div>
+    </nav>
+{% endblock %}
+    <!-- end  breadcrumb -->
+
+{% block content %}
+<h1 class="my-3 text-center">List of blogs</h1>
+<a href="{% url 'blog:create' %}" class="btn btn-success " >Create new blog?</a>
+<div class="mt-3">
+
+</div>
+<!-- start list of blogs -->
+{%for blog in blogs %}
+        <!-- <a href="{ url 'blog:detail' pk=blog.id }"><h3>{{blog.title}}</h3></a> -->
+        <a href="{{blog.get_absolute_url}}"><h3>{{blog.title}}</h3></a>
+        {% if blog.content|wordcount < 55 %}
+            {{blog.content}}
+        {% else %}
+            {{blog.content|truncatewords:55}}
+            <a href="{% url 'blog:detail' pk=blog.pk%}">Read more</a>
+        {% endif %}
+        <p id='go'>Content has: {{blog.content|wordcount}} word{{blog.content|wordcount|pluralize}}</p>
+        <p>created at {{blog.timestamp|date:'F j H:i, D Y'}}</p>
+        <!-- end list of blogs if there are present-->
+{% empty %}
+        <h4>Unfortunately nothing found.</h3>
+{% endfor %}
+{% include 'blog/components/pagination.html' %}
+{% endblock content%}
+
+{% block contact_mail %}
+Conact us: {{contact_mail|urlize}}
+{%endblock contact_mail%}

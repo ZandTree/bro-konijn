@@ -1,0 +1,33 @@
+{% extends 'blog/layout.html'%}
+{%block title%}contact | {{block.super}}{% endblock %}
+
+{% block breadcrumb %}
+    <nav aria-label="breadcrumb" class="mt-2">
+        <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'blog:home'%}">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Make a new post</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Contact</li>
+            </ol>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} {{ message.tags }} {% endif %}>{{ message }}</li>
+    <!-- <a href="#" class="close">&times;</a> -->
+    {% endfor %}
+</ul>
+{% endif %}
+<h3 class="mt-5">Please give us a feedback</h3>
+
+<form  action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" value="Send" class="btn feed">
+
+</form>
+{% endblock %}
